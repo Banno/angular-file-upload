@@ -1,0 +1,21 @@
+{
+  "name": "banno-file-upload",
+  "description": "Simple factory and directives for file uploading in Angular",
+  "license": "Apache-2.0",
+  "authors": [
+    "Eric Heikes <eric.heikes@banno.com>"
+  ],
+  "keywords": ["angular", "file", "upload"],
+  "main": "dist/angular-file-upload.js",
+  "ignore": [
+    "**/.*",
+    "gulpfile.js",
+    "bower_components",
+    "node_modules"
+  ],
+  "moduleType": ["globals", "amd"],
+  "dependencies": {
+    "angular-cookies": ">=1.2.0",
+    "angular-file-upload": ">=1.0.0"
+  }
+}
