@@ -26,8 +26,7 @@ var angularVersions = [
 
 var testFilesFor = function(angularPath) {
 	return [
-		{ pattern: 'bower_components/angular-file-upload/*.js', included: false },
-		{ pattern: 'bower_components/es5-shim/*.js', included: false },
+		{ pattern: 'bower_components/angular-file-upload/**/*.js', included: false },
 		{ pattern: 'node_modules/**/*.js', included: false },
 		{ pattern: 'dist/*.js', included: false },
 		{ pattern: 'test/test-*.js', included: false },

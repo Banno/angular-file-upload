@@ -32,7 +32,7 @@ requirejs.config({
 		'angular-file-upload': 'bower_components/angular-file-upload/angular-file-upload',
 		'angular-mocks': 'node_modules/angular-mocks/angular-mocks',
 		'banno/fileUploader': 'dist/angular-file-upload',
-		'es5-shim': 'bower_components/es5-shim/es5-shim'
+		'es5-shim': 'node_modules/es5-shim/es5-shim'
 	},
 
 	// Start the test run once RequireJS is done.
