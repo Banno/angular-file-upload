@@ -26,6 +26,11 @@ uploaderModule.factory('BannoUploader', ['$cookies', '$http', 'FileUploader', fu
 		xsrfCookieName: $http.defaults.xsrfCookieName
 	};
 
+	// Angular 1.4 changed the $cookies API from properties to get().
+	function getCookie(name) {
+		return (typeof $cookies.get === 'function' ? $cookies.get(name) : $cookies[name]);
+	}
+
 	function FileUploader(url, opts) {
 		// Check for a URL.
 		if (!url) {
@@ -37,7 +42,7 @@ uploaderModule.factory('BannoUploader', ['$cookies', '$http', 'FileUploader', fu
 
 		// Add in the XSRF header.
 		if (opts.xsrfHeaderName) {
-			opts.headers[opts.xsrfHeaderName] = $cookies.get(opts.xsrfCookieName);
+			opts.headers[opts.xsrfHeaderName] =  getCookie(opts.xsrfCookieName);
 		}
 
 		// Call the parent constructor.

@@ -3,12 +3,22 @@ define(['testModule'], function() {
 
 	describe('BannoUploader', function() {
 
-		var BannoUploader;
+		var $cookies, BannoUploader;
 		var testUrl = 'http://example.com/';
+
+		// Angular 1.4 changed the $cookies API from properties to put().
+		var setCookie = function(name, val) {
+			if (typeof $cookies.put === 'function') {
+				$cookies.put(name, val);
+			} else {
+				$cookies[name] = val;
+			}
+		};
 
 		beforeEach(module('banno.fileUploader'));
 
-		beforeEach(inject(function(_BannoUploader_) {
+		beforeEach(inject(function(_$cookies_, _BannoUploader_) {
+			$cookies = _$cookies_;
 			BannoUploader = _BannoUploader_;
 		}));
 
@@ -78,23 +88,23 @@ define(['testModule'], function() {
 			expect(Object.keys(obj.headers)).toContain($http.defaults.xsrfHeaderName);
 		}));
 
-		it('should use the XSRF token from the cookie', inject(function($http, $cookies) {
+		it('should use the XSRF token from the cookie', inject(function($http) {
 			var xsrfToken = 'foobar';
-			$cookies.put($http.defaults.xsrfCookieName, xsrfToken);
+			setCookie($http.defaults.xsrfCookieName, xsrfToken);
 			var obj = new BannoUploader(testUrl);
 			expect(obj.headers[$http.defaults.xsrfHeaderName]).toBe(xsrfToken);
 		}));
 
-		it('should allow the XSRF names to be overridden', inject(function($cookies) {
+		it('should allow the XSRF names to be overridden', function() {
 			var xsrfToken = 'foobar';
 			var opts = {
 				xsrfHeaderName: 'XSRF-HEADER-NAME',
 				xsrfCookieName: 'XSRF-COOKIE-NAME'
 			};
-			$cookies.put(opts.xsrfCookieName, xsrfToken);
+			setCookie(opts.xsrfCookieName, xsrfToken);
 			var obj = new BannoUploader(testUrl, opts);
 			expect(obj.headers[opts.xsrfHeaderName]).toBe(xsrfToken);
-		}));
+		});
 
 		it('should not add an XSRF header if xsrfHeaderName is falsy', inject(function($http) {
 			var opts = {
