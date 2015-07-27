@@ -1,6 +1,6 @@
-angular.module('banno.fileUploader', ['ngCookies', 'angularFileUpload']).factory('BannoUploader', [
-	'$cookies', '$http', 'FileUploader', function($cookies, $http, ParentClass)
-{
+var uploaderModule = angular.module('banno.fileUploader', ['ngCookies', 'angularFileUpload']);
+
+uploaderModule.factory('BannoUploader', ['$cookies', '$http', 'FileUploader', function($cookies, $http, ParentClass) {
 	'use strict';
 
 	var defaultOpts = {
@@ -33,4 +33,69 @@ angular.module('banno.fileUploader', ['ngCookies', 'angularFileUpload']).factory
 	FileUploader.prototype.constructor = FileUploader;
 
 	return FileUploader;
+}]);
+
+// Create directive aliases without the "nv" prefix.
+// How to add-in directive from another directive: http://stackoverflow.com/a/19228302
+var aliases = {
+	'upload-selected': 'nv-file-select',
+	'upload-dropped': 'nv-file-drop',
+	'upload-over-class': 'nv-file-over'
+};
+
+var aliasElement = function(element, attrName) {
+	'use strict';
+
+	// Remember the original value.
+	var oldVal = element.attr(attrName);
+
+	// Remove the original attribute, replace it with the "nv-" version.
+	element.attr(aliases[attrName], '');
+	element.removeAttr(attrName, '');
+	element.removeAttr('data-' + attrName, ''); // alternate syntax
+
+	return oldVal;
+};
+
+uploaderModule.directive('uploadSelected', ['$compile', function($compile) {
+	'use strict';
+	return {
+		restrict: 'A',
+		replace: false,
+		terminal: true,
+		priority: 1000,
+		link: function(scope, element, attrs) {
+			aliasElement(element, 'upload-selected');
+			$compile(element)(scope);
+		}
+	};
+}]);
+
+uploaderModule.directive('uploadDropped', ['$compile', function($compile) {
+	'use strict';
+	return {
+		restrict: 'A',
+		replace: false,
+		terminal: true,
+		priority: 1000,
+		link: function(scope, element, attrs) {
+			aliasElement(element, 'upload-dropped');
+			$compile(element)(scope);
+		}
+	};
+}]);
+
+uploaderModule.directive('uploadOverClass', ['$compile', function($compile) {
+	'use strict';
+	return {
+		restrict: 'A',
+		replace: false,
+		terminal: true,
+		priority: 1000,
+		link: function(scope, element, attrs) {
+			var val = aliasElement(element, 'upload-over-class');
+			element.attr('over-class', val);
+			$compile(element)(scope);
+		}
+	};
 }]);

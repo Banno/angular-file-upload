@@ -31,11 +31,12 @@ requirejs.config({
 		'angular-cookies': 'bower_components/angular-cookies/angular-cookies',
 		'angular-file-upload': 'bower_components/angular-file-upload/angular-file-upload',
 		'angular-mocks': 'node_modules/angular-mocks/angular-mocks',
-		'banno/fileUploader': 'dist/angular-file-upload'
+		'banno/fileUploader': 'dist/angular-file-upload',
+		'es5-shim': 'bower_components/es5-shim/es5-shim'
 	},
 
 	// Start the test run once RequireJS is done.
 	callback: window.__karma__.start
 });
 
-define('testModule', ['banno/fileUploader', 'angular-mocks'], function(){});
+define('testModule', ['banno/fileUploader', 'angular-mocks', 'es5-shim'], function(){});

@@ -21,6 +21,20 @@ bower install --save banno-file-upload
 
 ## Usage
 
+```html
+<div ng-app="app">
+    <div ng-controller="myController">
+        <input type="file" upload-selected uploader="uploader"/><br/>
+        <ul>
+            <li ng-repeat="item in uploader.queue">
+                Name: <span ng-bind="item.file.name"></span><br/>
+                <button ng-click="item.upload()">upload</button>
+            </li>
+        </ul>
+    </div>
+</div>
+```
+
 ```javascript
 angular.module('myApp', ['banno.fileUploader'])
 .controller('myController', function($scope, BannoUploader) {
@@ -30,7 +44,26 @@ angular.module('myApp', ['banno.fileUploader'])
 });
 ```
 
-For details on the available options and the APIs, see the [documentation for the library](https://github.com/nervgh/angular-file-upload/wiki/Module-API) that this one is based on.
+* Create uploader instances in your controller by calling `new BannoUploader(uploadUrl)`.
+* Upload files through a file selection element with `upload-selected`:
+
+    ```html
+    <input type="file" upload-selected uploader="{your BannoUploader instance}">
+    ```
+
+* Upload files through drag-and-drop by specifying a `upload-dropped` destination element:
+
+    ```html
+    <element upload-dropped uploader="{your BannoUploader instance}"></element>
+    ```
+
+  To add a CSS class to a `upload-dropped` element when a user has dragged a file over the drop area, use `upload-over-class`:
+
+    ```html
+    <element upload-dropped upload-over-class="cssClass" uploader="{your BannoUploader instance}"></element>
+    ```
+
+For details on the available options and the APIs, see the [documentation for the library](https://github.com/nervgh/angular-file-upload/wiki/Module-API) that this library is based on.
 
 ## Configuration
 
