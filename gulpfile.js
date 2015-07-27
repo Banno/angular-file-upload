@@ -18,6 +18,25 @@ var jsFiles = [
 	'test/*.js'
 ];
 
+var angularVersions = [
+	'angular-1.2',
+	'angular-1.3',
+	'angular-1.4'
+];
+
+var testFilesFor = function(angularPath) {
+	return [
+		{ pattern: 'bower_components/angular-file-upload/*.js', included: false },
+		{ pattern: 'bower_components/es5-shim/*.js', included: false },
+		{ pattern: 'node_modules/**/*.js', included: false },
+		{ pattern: 'dist/*.js', included: false },
+		{ pattern: 'test/test-*.js', included: false },
+		{ pattern: 'test/' + angularPath + '/bower_components/**/*.js', included: false },
+		'test/requirejs.conf.js',
+		'test/' + angularPath + '/requirejs.conf.js'
+	];
+};
+
 gulp.task('lint', function() {
 	return gulp.src(jsFiles)
 		.pipe(jshint())
@@ -70,11 +89,17 @@ gulp.task('build', ['clean'], function() {
 		.pipe(gulp.dest('./dist'));
 });
 
+angularVersions.forEach(function(val) {
+	gulp.task('test:' + val, function(done) {
+		karma.start({
+			configFile: __dirname + '/test/karma.conf.js',
+			files: testFilesFor(val)
+		}, done);
+	});
+});
+
 gulp.task('test', function(done) {
-	karma.start({
-		configFile: __dirname + '/test/karma.conf.js',
-		singleRun: true
-	}, done);
+	return runSequence.apply(this, angularVersions.map(function(val) { return 'test:' + val; }).concat(done));
 });
 
 gulp.task('all', function(done) {

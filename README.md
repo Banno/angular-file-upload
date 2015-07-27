@@ -9,7 +9,7 @@ At the moment it's a thin wrapper around [nervgh's angular-file-upload](https://
 
 ## Requirements
 
-* [AngularJS](https://angularjs.org/) and [ngCookies](https://docs.angularjs.org/api/ngCookies)
+* [AngularJS](https://angularjs.org/) v1.2+ and [ngCookies](https://docs.angularjs.org/api/ngCookies)
 * [angular-file-upload](https://github.com/nervgh/angular-file-upload/)
 * ES5 support, or a [shim](https://github.com/es-shims/es5-shim)
 

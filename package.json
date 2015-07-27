@@ -14,7 +14,6 @@
   ],
   "dependencies": {},
   "devDependencies": {
-    "angular-mocks": "^1.4.3",
     "del": "^1.1.1",
     "gulp": "^3.8.11",
     "gulp-header": "^1.2.2",
@@ -35,6 +34,9 @@
   "repository": {
     "type": "git",
     "url": "git://github.com/Banno/angular-file-upload.git"
+  },
+  "scripts": {
+    "postinstall": "./postinstall.sh"
   },
   "bugs": {
     "url": "https://github.com/Banno/angular-file-upload/issues"

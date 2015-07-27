@@ -1,0 +1,8 @@
+{
+  "name": "banno-file-upload-angular-1.4",
+  "private": true,
+  "dependencies": {
+    "angular-cookies": "1.4.x",
+    "angular-mocks": "1.4.x"
+  }
+}
