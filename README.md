@@ -19,6 +19,8 @@ At the moment it's a thin wrapper around [nervgh's angular-file-upload](https://
 bower install --save banno-file-upload
 ```
 
+This library can either be loaded through the normal `<script>` tags, or by a module loader such as RequireJS.
+
 ## Usage
 
 To use, include `banno.fileUploader` in your Angular module.
@@ -106,8 +108,6 @@ $scope.uploader = new BannoUploader('http://example.com/api/upload', {
   xsrfHeaderName: null
 });
 ```
-
-This library can either be loaded through the normal `<script>` tags, or by a module loader such as RequireJS.
 
 ## Contributing
 
