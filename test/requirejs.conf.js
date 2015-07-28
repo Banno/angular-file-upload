@@ -31,7 +31,7 @@ requirejs.config({
 		'angular-cookies': 'bower_components/angular-cookies/angular-cookies',
 		'angular-file-upload': 'bower_components/angular-file-upload/angular-file-upload',
 		'angular-mocks': 'node_modules/angular-mocks/angular-mocks',
-		'banno/fileUploader': 'dist/angular-file-upload',
+		'banno/fileUploader': 'dist/banno-file-upload',
 		'es5-shim': 'node_modules/es5-shim/es5-shim'
 	},
 

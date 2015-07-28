@@ -6,7 +6,7 @@
     "Eric Heikes <eric.heikes@banno.com>"
   ],
   "keywords": ["angular", "file", "upload"],
-  "main": "dist/angular-file-upload.js",
+  "main": "dist/banno-file-upload.js",
   "ignore": [
     "**/.*",
     "gulpfile.js",

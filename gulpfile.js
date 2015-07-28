@@ -14,7 +14,7 @@ var umd         = require('gulp-umd');
 
 var jsFiles = [
 	'gulpfile.js',
-	'angular-file-upload.js',
+	'banno-file-upload.js',
 	'test/*.js'
 ];
 
@@ -55,7 +55,7 @@ gulp.task('build', ['clean'], function() {
 		' */',
 		''].join('\n');
 
-	return gulp.src('angular-file-upload.js')
+	return gulp.src('banno-file-upload.js')
 		.pipe(umd({
 			dependencies: function() {
 				return [{
