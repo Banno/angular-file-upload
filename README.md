@@ -21,6 +21,17 @@ bower install --save banno-file-upload
 
 ## Usage
 
+To use, include `banno.fileUploader` in your Angular module.
+
+```javascript
+angular.module('myApp', ['banno.fileUploader'])
+.controller('myController', function($scope, BannoUploader) {
+  $scope.uploader = new BannoUploader('http://example.com/api/upload', {
+    removeAfterUpload: true
+  });
+});
+```
+
 ```html
 <div ng-app="app">
     <div ng-controller="myController">
@@ -33,15 +44,6 @@ bower install --save banno-file-upload
         </ul>
     </div>
 </div>
-```
-
-```javascript
-angular.module('myApp', ['banno.fileUploader'])
-.controller('myController', function($scope, BannoUploader) {
-  $scope.uploader = new BannoUploader('http://example.com/api/upload', {
-    removeAfterUpload: true
-  });
-});
 ```
 
 * Create uploader instances in your controller by calling `new BannoUploader(uploadUrl)`.
@@ -80,6 +82,7 @@ The default options are:
 
 ```javascript
 {
+  method: 'POST',
   autoUpload: true,
   queueLimit: 1
 }
