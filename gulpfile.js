@@ -4,7 +4,7 @@ var del         = require('del');
 var gulp        = require('gulp');
 var header      = require('gulp-header');
 var jshint      = require('gulp-jshint');
-var karma       = require('karma').server;
+var karma       = require('karma').Server;
 var pkg         = require('./package.json');
 var rename      = require('gulp-rename');
 var runSequence = require('run-sequence').use(gulp);
@@ -90,10 +90,10 @@ gulp.task('build', ['clean'], function() {
 
 angularVersions.forEach(function(val) {
 	gulp.task('test:' + val, function(done) {
-		karma.start({
+		new karma({
 			configFile: __dirname + '/test/karma.conf.js',
 			files: testFilesFor(val)
-		}, done);
+		}, function() { done(); }).start();
 	});
 });
 
