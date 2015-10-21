@@ -4,7 +4,7 @@
  * (c) 2015 Jack Henry & Associates Inc
  * License: Apache-2.0
  */
-(function(root, factory) {
+;(function(root, factory) {
   if (typeof define === 'function' && define.amd) {
     define(['angular', 'angular-cookies', 'angular-file-upload'], factory);
   } else if (typeof exports === 'object') {
