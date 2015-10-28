@@ -69,13 +69,13 @@ gulp.task('build', ['clean'], function() {
 					amd: 'angular-cookies',
 					cjs: 'angular-cookies',
 					global: 'unused',
-					param: 'unused'
+					param: 'unusedAngularCookies',
 				}, {
 					name: 'angular-file-upload',
 					amd: 'angular-file-upload',
 					cjs: 'angular-file-upload',
 					global: 'unused',
-					param: 'unused'
+					param: 'unusedAngularFileUpload'
 				}];
 			},
 			exports: function() { return '"banno.fileUploader"'; },
