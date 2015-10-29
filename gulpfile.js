@@ -68,13 +68,13 @@ gulp.task('build', ['clean'], function() {
 					name: 'angular-cookies',
 					amd: 'angular-cookies',
 					cjs: 'angular-cookies',
-					global: 'unused',
+					global: 'unusedAngularCookies',
 					param: 'unusedAngularCookies',
 				}, {
 					name: 'angular-file-upload',
 					amd: 'angular-file-upload',
 					cjs: 'angular-file-upload',
-					global: 'unused',
+					global: 'unusedAngularFileUpload',
 					param: 'unusedAngularFileUpload'
 				}];
 			},
