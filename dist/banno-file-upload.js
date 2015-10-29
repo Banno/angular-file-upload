@@ -1,5 +1,5 @@
 /*!
- * banno-file-upload v1.0.0
+ * banno-file-upload v1.0.1
  * https://github.com/Banno/angular-file-upload
  * (c) 2015 Jack Henry & Associates Inc
  * License: Apache-2.0
@@ -10,9 +10,9 @@
   } else if (typeof exports === 'object') {
     module.exports = factory(require('angular'), require('angular-cookies'), require('angular-file-upload'));
   } else {
-    root.banno = root.banno || {}; root.banno.fileUploader = factory(root.angular, root.unused, root.unused);
+    root.banno = root.banno || {}; root.banno.fileUploader = factory(root.angular, root.unusedAngularCookies, root.unusedAngularFileUpload);
   }
-}(this, function(angular, unused, unused) {
+}(this, function(angular, unusedAngularCookies, unusedAngularFileUpload) {
 var uploaderModule = angular.module('banno.fileUploader', ['ngCookies', 'angularFileUpload']);
 
 uploaderModule.factory('BannoUploader', ['$cookies', '$http', 'FileUploader', function($cookies, $http, ParentClass) {

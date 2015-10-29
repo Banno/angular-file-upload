@@ -1,7 +1,7 @@
 {
   "name": "banno-file-upload",
   "description": "Simple factory and directives for file uploading in Angular",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "homepage": "https://github.com/Banno/angular-file-upload",
   "license": "Apache-2.0",
   "contributors": [
