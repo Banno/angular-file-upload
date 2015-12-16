@@ -42,8 +42,8 @@ gulp.task('lint', function() {
 		.pipe(jshint.reporter(stylish));
 });
 
-gulp.task('clean', function(done) {
-	del('./dist', done);
+gulp.task('clean', function() {
+	return del('./dist');
 });
 
 gulp.task('build', ['clean'], function() {
