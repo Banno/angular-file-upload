@@ -22,6 +22,10 @@ define(['testModule'], function() {
 			BannoUploader = _BannoUploader_;
 		}));
 
+		it('should have the angularFileUpload static properties', function() {
+			expect(BannoUploader.FileItem).toBeDefined();
+		});
+
 		it('should construct a new BannoUploader object', function() {
 			var obj = new BannoUploader(testUrl);
 			expect(obj).toEqual(jasmine.any(Object));
