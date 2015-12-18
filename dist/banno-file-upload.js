@@ -52,6 +52,12 @@ uploaderModule.factory('BannoUploader', ['$cookies', '$http', 'FileUploader', fu
 	FileUploader.prototype = Object.create(ParentClass.prototype, {});
 	FileUploader.prototype.constructor = FileUploader;
 
+	for(var prop in ParentClass) {
+		if (ParentClass.hasOwnProperty(prop)) {
+			FileUploader[prop] = ParentClass[prop];
+		}
+	}
+
 	return FileUploader;
 }]);
 
